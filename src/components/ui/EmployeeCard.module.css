@@ -40,9 +40,27 @@
 }
 
 .headerInfo {
+  flex: 1;
+}
+
+.nameRow {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.reputation {
+  display: flex;
+  align-items: center;
   gap: 4px;
+  background: rgba(255, 215, 0, 0.1);
+  color: #ffd700;
+  padding: 2px 8px;
+  border-radius: 99px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 215, 0, 0.2);
 }
 
 .name {
@@ -70,6 +88,57 @@
   padding: 16px 0;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
+}
+
+.matchScoreRow {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.matchHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.matchLabel {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--foreground-muted);
+}
+
+.matchValue {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.matchBar {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.matchFill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.successRateText {
+  font-size: 0.9rem;
+}
+
+.successRateText strong {
+  color: #10b981;
 }
 
 .detailItem {

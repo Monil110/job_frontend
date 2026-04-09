@@ -25,6 +25,133 @@
   font-size: 1.1rem;
 }
 
+.scoreBanner {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 28px;
+  margin-bottom: 40px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.scoreHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 16px;
+}
+
+.completenessText {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.scoreInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.scoreLabel {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.scoreValue {
+  font-size: 1.75rem;
+  font-weight: 800;
+  font-family: var(--font-outfit);
+}
+
+.scoreProgress {
+  height: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.scoreFill {
+  height: 100%;
+  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+}
+
+.gateMessage {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ef4444;
+  font-size: 0.9rem;
+  padding: 12px;
+  background: rgba(239, 68, 68, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(239, 68, 68, 0.1);
+  font-weight: 500;
+}
+
+.titleWithIcon {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sectionIcon {
+  color: var(--primary);
+}
+
+.emptyState {
+  padding: 40px;
+  text-align: center;
+  color: #64748b;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  font-style: italic;
+}
+
+.statIconWrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+  color: #ef4444;
+}
+
+.errorContainer h2 {
+  color: var(--foreground);
+  margin: 16px 0 8px;
+}
+
+.errorContainer p {
+  color: #94a3b8;
+  margin-bottom: 24px;
+}
+
+.retryBtn {
+  background: var(--primary);
+  color: white;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
 .loading {
   padding: 40px;
   text-align: center;

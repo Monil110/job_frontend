@@ -4,29 +4,30 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './Navigation.module.css';
-import { Home, Compass, MessageSquare, User, Settings, LogOut } from 'lucide-react';
+import { Home, Compass, MessageSquare, User, Settings, LogOut, Bell, Award } from 'lucide-react';
 
 // For MVP, we pass the current role as prop.
 interface NavigationProps {
-  role?: 'candidate' | 'employee' | null;
+  role?: 'candidate' | 'employee' | 'pending' | null;
+  reputation?: number;
 }
 
-export function Navigation({ role }: NavigationProps) {
+export function Navigation({ role, reputation = 50 }: NavigationProps) {
   const pathname = usePathname();
 
   const getLinks = () => {
     const baseLinks = [
-      { href: '/dashboard', label: 'Dashboard', icon: <Home size={20} /> },
+      { href: `/dashboard?role=${role}`, label: 'Dashboard', icon: <Home size={20} /> },
     ];
 
     if (role === 'candidate') {
-      baseLinks.push({ href: '/search', label: 'Discover', icon: <Compass size={20} /> });
+      baseLinks.push({ href: `/search?role=${role}`, label: 'Discover', icon: <Compass size={20} /> });
     }
 
     baseLinks.push(
-      { href: '/requests', label: 'Requests', icon: <MessageSquare size={20} /> },
-      { href: '/profile', label: 'Profile', icon: <User size={20} /> },
-      { href: '/settings', label: 'Settings', icon: <Settings size={20} /> }
+      { href: `/requests?role=${role}`, label: 'Requests', icon: <MessageSquare size={20} /> },
+      { href: `/profile?role=${role}`, label: 'Profile', icon: <User size={20} /> },
+      { href: `/settings?role=${role}`, label: 'Settings', icon: <Settings size={20} /> }
     );
 
     return baseLinks;
@@ -42,9 +43,19 @@ export function Navigation({ role }: NavigationProps) {
           </Link>
           <div className={styles.topActions}>
             {role ? (
-              <Link href="/settings" className={styles.profileBtn}>
-                <div className={styles.avatarMini} />
-              </Link>
+              <div className={styles.userControls}>
+                <div className={styles.reputationBadge}>
+                  <Award size={16} />
+                  <span>{reputation}</span>
+                </div>
+                <Link href={`/notifications?role=${role}`} className={styles.notifBtn}>
+                  <Bell size={20} />
+                  <span className={styles.notifBadge} />
+                </Link>
+                <Link href={`/profile?role=${role}`} className={styles.profileBtn}>
+                  <div className={styles.avatarMini} />
+                </Link>
+              </div>
             ) : (
               <Link href="/login" className={styles.loginBtn}>Sign In</Link>
             )}

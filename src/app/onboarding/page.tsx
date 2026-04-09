@@ -4,12 +4,19 @@ import React, { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import styles from './onboarding.module.css';
 
+import { api } from '@/services/api';
+import { useAuth } from '@/context/AuthContext';
+import { Loader2 } from 'lucide-react';
+import { Role } from '@/lib/mockData';
+
 function OnboardingContent() {
+  const { user, login } = useAuth();
   const router = useRouter();
   const searchParams = useSearchParams();
-  const role = searchParams.get('role') as 'candidate' | 'employee' | null;
+  const role = (searchParams.get('role') as 'candidate' | 'employee') || 'candidate';
 
   const [step, setStep] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     experience: '',
@@ -17,11 +24,25 @@ function OnboardingContent() {
     targetCompanies: '',
     company: '',
     jobRole: '',
+    resumeUploaded: false,
     openToReferrals: true,
   });
 
+  const calculateScore = () => {
+    let score = 0;
+    if (formData.name) score += 10;
+    if (formData.experience) score += 20;
+    const skillsCount = formData.skills.split(',').filter(s => s.trim()).length;
+    score += Math.min(skillsCount * 10, 30);
+    if (role === 'candidate' && formData.resumeUploaded) score += 40;
+    if (role === 'employee' && formData.company) score += 20;
+    if (role === 'employee' && formData.jobRole) score += 20;
+    return Math.min(score, 100);
+  };
+
+  const currentScore = calculateScore();
+
   useEffect(() => {
-    // If no role in URL, fallback to candidate
     if (!role) {
       router.replace('/onboarding?role=candidate');
     }
@@ -40,13 +61,32 @@ function OnboardingContent() {
   const handleNext = () => setStep(prev => prev + 1);
   const handlePrev = () => setStep(prev => prev - 1);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate API call and redirect
-    setTimeout(() => {
-      // Mock passing role to dashboard for hackathon prototype
-      router.push(`/dashboard?role=${role || 'candidate'}`);
-    }, 600);
+    setIsSubmitting(true);
+    const score = calculateScore();
+    
+    try {
+      // Real API call
+      if (role === 'candidate') {
+        await api.updateCandidateProfile({ ...formData, profileScore: score });
+      } else {
+        await api.updateEmployeeProfile({ ...formData, profileScore: score });
+      }
+      
+      // Update local state
+      if (user) {
+        login(localStorage.getItem('token') || '', { ...user, profileScore: score });
+      }
+      
+      router.push(`/dashboard?role=${role}&score=${score}`);
+    } catch (err) {
+      // For demo purposes, we still proceed if API fails
+      console.error('API Error:', err);
+      router.push(`/dashboard?role=${role}&score=${score}`);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const renderCandidateFields = () => (
@@ -67,6 +107,11 @@ function OnboardingContent() {
           
           <label>Target Companies (comma separated)</label>
           <input type="text" name="targetCompanies" value={formData.targetCompanies} onChange={handleChange} placeholder="Google, Meta, Stripe" />
+
+          <div className={styles.checkboxGroup}>
+            <input type="checkbox" id="resumeUploaded" name="resumeUploaded" checked={formData.resumeUploaded} onChange={handleChange} />
+            <label htmlFor="resumeUploaded">Resume Uploaded (Simulated)</label>
+          </div>
         </div>
       )}
     </>
@@ -105,9 +150,13 @@ function OnboardingContent() {
       <div className={`glass-panel ${styles.onboardingBox}`}>
         <div className={styles.header}>
           <h2>Complete Your Profile</h2>
-          <p>Step {step} of 2</p>
+          <div className={styles.progressContainer}>
+            <div className={styles.stepIndicator}>Step {step} of 2</div>
+            <div className={styles.completenessIndicator}>Profile: {currentScore}% complete</div>
+          </div>
           <div className={styles.progressBar}>
             <div className={styles.progressFill} style={{ width: `${(step / 2) * 100}%` }}></div>
+            <div className={styles.scoreFill} style={{ width: `${currentScore}%` }}></div>
           </div>
         </div>
 

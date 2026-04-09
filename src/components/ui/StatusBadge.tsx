@@ -12,13 +12,19 @@ interface StatusBadgeProps {
 export function StatusBadge({ status }: StatusBadgeProps) {
   const getStatusConfig = () => {
     switch (status) {
-      case 'Accepted':
+      case 'ACCEPTED':
         return { icon: <CheckCircle size={14} />, className: styles.accepted };
-      case 'Rejected':
+      case 'REJECTED':
         return { icon: <XCircle size={14} />, className: styles.rejected };
-      case 'Referred':
+      case 'REFERRED':
         return { icon: <ExternalLink size={14} />, className: styles.referred };
-      case 'Pending':
+      case 'INTERVIEWING':
+        return { icon: <Clock size={14} />, className: styles.referred };
+      case 'OFFER':
+        return { icon: <CheckCircle size={14} />, className: styles.accepted };
+      case 'HIRED':
+        return { icon: <CheckCircle size={14} />, className: styles.hired };
+      case 'PENDING':
       default:
         return { icon: <Clock size={14} />, className: styles.pending };
     }

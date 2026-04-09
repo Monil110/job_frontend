@@ -86,11 +86,70 @@
   gap: 24px;
 }
 
-.loading, .noResults {
-  padding: 40px;
+.loading {
+  padding: 80px 40px;
   text-align: center;
   color: var(--foreground-muted);
-  font-size: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  border-top-color: var(--primary);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.errorState {
+  padding: 80px 40px;
+  text-align: center;
+  color: #ef4444;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.retryBtn {
+  background: var(--primary);
+  color: white;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-top: 12px;
+}
+
+.noResults {
+  grid-column: 1 / -1;
+  padding: 80px 40px;
+  text-align: center;
+  color: var(--foreground-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+}
+
+.modalSubtitle {
+  color: var(--foreground-muted);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+.spinningIcon {
+  animation: spin 1s linear infinite;
 }
 
 /* Modal Content Styles */
@@ -150,16 +209,18 @@
 .sendBtn {
   width: 100%;
   padding: 14px;
-  border-radius: 12px;
   background: var(--primary);
-  color: #fff;
-  font-weight: 600;
-  font-size: 1.05rem;
-  margin-top: 8px;
+  color: white;
+  border-radius: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   transition: all 0.2s;
 }
 
-.sendBtn:hover {
-  background: var(--primary-hover);
-  transform: translateY(-2px);
+.sendBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }

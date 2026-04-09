@@ -3,7 +3,7 @@
 import React from 'react';
 import styles from './EmployeeCard.module.css';
 import { Employee } from '@/lib/mockData';
-import { Building2, Briefcase, Star, Send } from 'lucide-react';
+import { Building2, Briefcase, Star, Send, Award } from 'lucide-react';
 
 interface EmployeeCardProps {
   employee: Employee;
@@ -11,9 +11,22 @@ interface EmployeeCardProps {
   isPrivacyMode?: boolean;
 }
 
-export function EmployeeCard({ employee, onRequestClick, isPrivacyMode = true }: EmployeeCardProps) {
+export function EmployeeCard({ employee, onRequestClick, isPrivacyMode = false }: EmployeeCardProps) {
   // If privacy mode is on, we blur/hide identifiers
   const displayName = isPrivacyMode ? "Anonymous Employee" : employee.name;
+  
+  // Ensure matchScore is a number
+  const matchScore = typeof employee.matchScore === 'number' 
+    ? employee.matchScore 
+    : (Math.random() * 20 + 75); // Mock fallback if not provided
+
+  const getMatchLevel = (score: number) => {
+    if (score >= 90) return { label: 'Highly Compatible', color: '#10b981' };
+    if (score >= 80) return { label: 'Great Match', color: '#3b82f6' };
+    return { label: 'Good Match', color: '#94a3b8' };
+  };
+
+  const matchLevel = getMatchLevel(matchScore);
   
   return (
     <div className={`glass-panel ${styles.card}`}>
@@ -26,7 +39,13 @@ export function EmployeeCard({ employee, onRequestClick, isPrivacyMode = true }:
           )}
         </div>
         <div className={styles.headerInfo}>
-          <h3 className={styles.name}>{displayName}</h3>
+          <div className={styles.nameRow}>
+            <h3 className={styles.name}>{displayName}</h3>
+            <div className={styles.reputation} title="Reputation Score">
+              <Award size={14} />
+              <span>{employee.reputationScore}</span>
+            </div>
+          </div>
           <div className={styles.companyRow}>
             <Building2 size={14} className={styles.icon} />
             <span className={styles.company}>{employee.company}</span>
@@ -35,13 +54,29 @@ export function EmployeeCard({ employee, onRequestClick, isPrivacyMode = true }:
       </div>
 
       <div className={styles.details}>
+        {employee.role === 'employee' && (
+          <div className={styles.matchScoreRow}>
+            <div className={styles.matchHeader}>
+              <span className={styles.matchLabel}>{matchLevel.label}</span>
+              <span className={styles.matchValue}>{matchScore.toFixed(0)}%</span>
+            </div>
+            <div className={styles.matchBar}>
+              <div 
+                className={styles.matchFill} 
+                style={{ width: `${matchScore}%`, backgroundColor: matchLevel.color }} 
+              />
+            </div>
+          </div>
+        )}
         <div className={styles.detailItem}>
           <Briefcase size={16} />
           <span>{employee.jobRole} • {employee.experience} yrs exp</span>
         </div>
         <div className={styles.detailItem}>
           <Star size={16} />
-          <span>Acceptance Rate: {employee.stats.acceptanceRate}% ({employee.stats.referralsMade} Referrals)</span>
+          <span className={styles.successRateText}>
+            <strong>{employee.stats.successRate}% Success Rate</strong> • {employee.stats.referralsMade} Referrals
+          </span>
         </div>
       </div>
 

@@ -28,18 +28,49 @@
   margin-bottom: 16px;
 }
 
+.progressContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.stepIndicator, .completenessIndicator {
+  font-size: 0.85rem;
+  color: var(--foreground-muted);
+  font-weight: 500;
+}
+
+.completenessIndicator {
+  color: #10b981;
+}
+
 .progressBar {
-  height: 6px;
-  background: var(--border);
-  border-radius: 99px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  position: relative;
   overflow: hidden;
 }
 
 .progressFill {
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100%;
-  background: var(--primary);
-  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.1);
   transition: width 0.3s ease;
+  z-index: 1;
+}
+
+.scoreFill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: #10b981;
+  transition: width 0.5s ease;
+  z-index: 2;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
 }
 
 .formContent {

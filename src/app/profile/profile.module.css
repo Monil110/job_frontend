@@ -63,9 +63,28 @@
   padding: 24px 40px 40px;
 }
 
+.nameHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 4px;
+}
+
+.repBadge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 215, 0, 0.1);
+  color: #ffd700;
+  padding: 8px 16px;
+  border-radius: 99px;
+  font-weight: 700;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
 .profileInfo h2 {
   font-size: 2rem;
-  margin-bottom: 4px;
+  margin: 0;
 }
 
 .roleTitle {
@@ -79,21 +98,84 @@
   gap: 12px;
 }
 
-.badge, .completenessBadge {
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 99px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: rgba(79, 70, 229, 0.1);
+  color: #818cf8;
+}
+
+.completenessBadge {
   padding: 6px 12px;
   border-radius: 99px;
   font-size: 0.85rem;
   font-weight: 600;
 }
 
-.badge {
-  background: rgba(245, 158, 11, 0.15);
-  color: var(--warning);
+.good {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
 }
 
-.completenessBadge {
-  background: rgba(16, 185, 129, 0.15);
-  color: var(--success);
+.bad {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+
+.successStats {
+  display: flex;
+  gap: 40px;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.statItem strong {
+  font-size: 1.5rem;
+  color: var(--foreground);
+}
+
+.statItem span {
+  font-size: 0.9rem;
+  color: var(--foreground-muted);
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.editBtn, .shareBtn {
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.editBtn {
+  background: var(--primary);
+  color: white;
+}
+
+.shareBtn {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+}
+
+.shareBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .sectionDivider {

@@ -1,0 +1,175 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+  padding-top: 64px;
+  padding-left: 260px;
+}
+
+.mainContent {
+  flex: 1;
+  padding: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+.header p {
+  color: var(--foreground-muted);
+  font-size: 1.1rem;
+}
+
+.notifList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.notifCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+  cursor: pointer;
+  position: relative;
+}
+
+.notifCard:hover {
+  background: rgba(255, 255, 255, 0.03);
+  transform: translateY(-2px);
+}
+
+.unread {
+  border-left: 4px solid var(--primary);
+  background: rgba(79, 70, 229, 0.05);
+}
+
+.read {
+  opacity: 0.8;
+}
+
+.notifIconContainer {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.statusIcon {
+  color: #10b981;
+}
+
+.matchIcon {
+  color: var(--primary);
+}
+
+.infoIcon {
+  color: #3b82f6;
+}
+
+.notifContent {
+  flex: 1;
+}
+
+.message {
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--foreground-muted);
+}
+
+.unreadDot {
+  width: 10px;
+  height: 10px;
+  background: var(--primary);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--primary);
+}
+
+.noNotifs {
+  padding: 80px 40px;
+  text-align: center;
+  color: var(--foreground-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.noNotifs p {
+  font-size: 1.25rem;
+}
+
+.loading {
+  padding: 80px 40px;
+  text-align: center;
+  color: var(--foreground-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  border-top-color: var(--primary);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.errorState {
+  padding: 80px 40px;
+  text-align: center;
+  color: #ef4444;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.retryBtn {
+  background: var(--primary);
+  color: white;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-top: 12px;
+}
+
+@media (max-width: 1024px) {
+  .layout {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .notifCard {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
