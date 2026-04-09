@@ -1,0 +1,165 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+  padding-top: 64px;
+  padding-left: 260px;
+}
+
+.mainContent {
+  flex: 1;
+  padding: 40px;
+  max-width: 1400px;
+}
+
+.header {
+  margin-bottom: 32px;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+.header p {
+  color: var(--foreground-muted);
+  font-size: 1.1rem;
+}
+
+.searchControls {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.searchBar {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 16px;
+  color: var(--foreground-muted);
+}
+
+.searchBar input {
+  width: 100%;
+  padding: 16px 16px 16px 48px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  font-size: 1.05rem;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+
+.searchBar input:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: rgba(79, 70, 229, 0.05);
+}
+
+.filterBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 24px;
+  border-radius: 12px;
+  background: var(--background-secondary);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  font-size: 1.05rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.filterBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.loading, .noResults {
+  padding: 40px;
+  text-align: center;
+  color: var(--foreground-muted);
+  font-size: 1.1rem;
+}
+
+/* Modal Content Styles */
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.modalContent p {
+  color: var(--foreground-muted);
+  font-size: 0.95rem;
+}
+
+.messageBox {
+  width: 100%;
+  padding: 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  font-family: inherit;
+  font-size: 0.95rem;
+  resize: vertical;
+}
+
+.messageBox:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.resumePreview {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 12px;
+  background: rgba(79, 70, 229, 0.1);
+  border: 1px solid rgba(79, 70, 229, 0.2);
+}
+
+.resumeIcon {
+  font-size: 2rem;
+}
+
+.resumeText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.resumeText span {
+  font-size: 0.85rem;
+  color: var(--foreground-muted);
+}
+
+.sendBtn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-top: 8px;
+  transition: all 0.2s;
+}
+
+.sendBtn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}

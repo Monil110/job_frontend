@@ -1,0 +1,123 @@
+﻿
+> job_frontend@0.1.0 build
+> next build
+
+Γû▓ Next.js 16.2.3 (Turbopack)
+
+  Creating an optimized production build ...
+node.exe : 
+At C:\Program 
+Files\nodejs\npm.ps1:29 
+char:3
++   & $NODE_EXE 
+$NPM_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~
+    + CategoryInfo        
+      : NotSpecified: (:  
+  String) [], RemoteExc   
+ eption
+    + FullyQualifiedError 
+   Id : NativeCommandErr  
+  or
+ 
+> Build error occurred
+Error: Turbopack build 
+failed with 3 errors:
+./src/app/onboarding/onboa
+rding.module.css
+Transforming CSS failed
+Selector 
+"input[type="number"]" is 
+not pure. Pure selectors 
+must contain at least one 
+local class or id.
+
+Import traces:
+  Client Component 
+Browser:
+    ./src/app/onboarding/o
+nboarding.module.css 
+[Client Component Browser]
+    ./src/app/onboarding/p
+age.tsx [Client Component 
+Browser]
+    ./src/app/onboarding/p
+age.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/onboarding/o
+nboarding.module.css 
+[Client Component SSR]
+    ./src/app/onboarding/p
+age.tsx [Client Component 
+SSR]
+    ./src/app/onboarding/p
+age.tsx [Server Component]
+
+
+./src/app/onboarding/onboa
+rding.module.css
+Transforming CSS failed
+Selector 
+"input[type="text"]" is 
+not pure. Pure selectors 
+must contain at least one 
+local class or id.
+
+Import traces:
+  Client Component 
+Browser:
+    ./src/app/onboarding/o
+nboarding.module.css 
+[Client Component Browser]
+    ./src/app/onboarding/p
+age.tsx [Client Component 
+Browser]
+    ./src/app/onboarding/p
+age.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/onboarding/o
+nboarding.module.css 
+[Client Component SSR]
+    ./src/app/onboarding/p
+age.tsx [Client Component 
+SSR]
+    ./src/app/onboarding/p
+age.tsx [Server Component]
+
+
+./src/app/onboarding/onboa
+rding.module.css
+Transforming CSS failed
+Selector "label" is not 
+pure. Pure selectors must 
+contain at least one 
+local class or id.
+
+Import traces:
+  Client Component 
+Browser:
+    ./src/app/onboarding/o
+nboarding.module.css 
+[Client Component Browser]
+    ./src/app/onboarding/p
+age.tsx [Client Component 
+Browser]
+    ./src/app/onboarding/p
+age.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/onboarding/o
+nboarding.module.css 
+[Client Component SSR]
+    ./src/app/onboarding/p
+age.tsx [Client Component 
+SSR]
+    ./src/app/onboarding/p
+age.tsx [Server Component]
+
+
+    at ignore-listed 
+frames

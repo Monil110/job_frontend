@@ -1,0 +1,123 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+  padding-top: 64px;
+  padding-left: 260px;
+}
+
+.mainContent {
+  flex: 1;
+  padding: 40px;
+  max-width: 1000px;
+}
+
+.header {
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+.header p {
+  color: var(--foreground-muted);
+  font-size: 1.1rem;
+}
+
+.profileContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.profileCard {
+  overflow: hidden;
+  position: relative;
+}
+
+.coverPhoto {
+  height: 160px;
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.4), rgba(167, 139, 250, 0.4));
+  border-bottom: 1px solid var(--border);
+}
+
+.avatarWrap {
+  position: relative;
+  height: 60px;
+  padding: 0 40px;
+}
+
+.avatarPlaceholder {
+  position: absolute;
+  bottom: 0;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--background-secondary);
+  border: 4px solid var(--background);
+  background-image: linear-gradient(135deg, var(--primary), #a78bfa);
+}
+
+.profileInfo {
+  padding: 24px 40px 40px;
+}
+
+.profileInfo h2 {
+  font-size: 2rem;
+  margin-bottom: 4px;
+}
+
+.roleTitle {
+  color: var(--foreground-muted);
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+}
+
+.badges {
+  display: flex;
+  gap: 12px;
+}
+
+.badge, .completenessBadge {
+  padding: 6px 12px;
+  border-radius: 99px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.badge {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--warning);
+}
+
+.completenessBadge {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--success);
+}
+
+.sectionDivider {
+  height: 1px;
+  background: var(--border);
+  margin: 24px 0;
+}
+
+.profileInfo h3 {
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skills span {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: var(--foreground-muted);
+}
